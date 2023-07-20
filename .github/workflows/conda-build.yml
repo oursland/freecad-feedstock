@@ -8,7 +8,7 @@ on: [push, pull_request]
 jobs:
   build:
     name: ${{ matrix.CONFIG }}
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -16,19 +16,19 @@ jobs:
           - CONFIG: linux_64_python3.10.____cpython
             UPLOAD_PACKAGES: True
             DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-            os: ubuntu
+            os: ubuntu-latest
           - CONFIG: win_64_python3.10.____cpython
             UPLOAD_PACKAGES: True
-            os: windows
+            os: windows-latest
           - CONFIG: osx_64_python3.10.____cpython
             UPLOAD_PACKAGES: True
-            os: macos
+            os: macos-11
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Build on Linux
-      if: matrix.os == 'ubuntu'
+      if: matrix.os == 'ubuntu-latest'
       env:
         CONFIG: ${{ matrix.CONFIG }}
         UPLOAD_PACKAGES: ${{ matrix.UPLOAD_PACKAGES }}
@@ -50,7 +50,7 @@ jobs:
         ./.scripts/run_docker_build.sh
 
     - name: Build on macOS
-      if: matrix.os == 'macos'
+      if: matrix.os == 'macos-11'
       env:
         CONFIG: ${{ matrix.CONFIG }}
         UPLOAD_PACKAGES: ${{ matrix.UPLOAD_PACKAGES }}
@@ -72,7 +72,7 @@ jobs:
       with:
         miniforge-version: latest
         miniforge-variant: Mambaforge
-      if: matrix.os == 'windows'
+      if: matrix.os == 'windows-latest'
     - name: Build on windows
       shell: cmd
       run: |
@@ -106,4 +106,4 @@ jobs:
         CI: github_actions
         UPLOAD_PACKAGES: ${{ matrix.UPLOAD_PACKAGES }}
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
-      if: matrix.os == 'windows'
+      if: matrix.os == 'windows-latest'
