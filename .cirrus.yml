@@ -1,0 +1,59 @@
+macos_task:
+    # Basic metadata:
+    name: build_osx_arm64_python3.10.____cpython
+    timeout_in: 90m
+
+    # The build machine:
+    macos_instance:
+      image: ghcr.io/cirruslabs/macos-monterey-xcode:13
+
+    # Environment variables:
+    env:
+      CONFIG: osx_arm64_python3.10.____cpython
+      UPLOAD_PACKAGES: True
+      BINSTAR_TOKEN: ENCRYPTED[2f9ea64d9038738e9a000fae7499c29a72f4695acc29d6cbac1489eb0abd12652354590e199881ac84ae855d1fe8d42c]
+
+    # Instructions:
+    osx_build_script: |
+      export CI=cirrus
+      export FEEDSTOCK_NAME=$(basename ${CIRRUS_REPO_NAME})
+      if [ -z "$CIRRUS_PR" ]; then
+        export IS_PR_BUILD="False"
+      else
+        export IS_PR_BUILD="True"
+      fi
+      ./.scripts/run_osx_build.sh
+
+linux_task:
+    # Basic metadata:
+    name: build_linux_aarch64_python3.10.____cpython
+    timeout_in: 90m
+
+    # The build machine:
+    compute_engine_instance:
+      image_project: cirrus-images
+      image: family/docker-builder-arm64
+      platform: linux
+      architecture: arm64
+      cpu: 8
+      memory: 10G
+      #disk: 100 # optional. By default, uses the smallest disk size required by the image.
+      nested_virtualization: true
+
+    # Environment variables:
+    env:
+      CONFIG: linux_aarch64_python3.10.____cpython
+      UPLOAD_PACKAGES: True
+      BINSTAR_TOKEN: ENCRYPTED[2f9ea64d9038738e9a000fae7499c29a72f4695acc29d6cbac1489eb0abd12652354590e199881ac84ae855d1fe8d42c]
+      DOCKER_IMAGE: quay.io/condaforge/linux-anvil-aarch64
+
+    # Instructions:
+    docker_build_script: |
+      export CI=cirrus
+      export FEEDSTOCK_NAME=$(basename ${CIRRUS_REPO_NAME})
+      if [ -z "$CIRRUS_PR" ]; then
+        export IS_PR_BUILD="False"
+      else
+        export IS_PR_BUILD="True"
+      fi
+      ./.scripts/run_docker_build.sh

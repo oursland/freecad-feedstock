@@ -1,9 +1,9 @@
 provider:
   win: github_actions
   linux_64: github_actions
-  linux_aarch64: github_actions
+  linux_aarch64: azure
   osx_64: github_actions
-  osx_arm64: github_actions
+  osx_arm64: azure
 build_platform:
   osx_arm64: osx_arm64
   linux_aarch64: linux_aarch64
