@@ -1,7 +1,10 @@
 provider:
-  win: azure
-  osx: azure
-  linux: azure
+  win: github_actions
+  linux_64: github_actions
+  linux_aarch64: github_actions
+  osx_64: github_actions
+  osx_arm64: github_actions
 build_platform:
-  osx_arm64: osx_64
+  osx_arm64: osx_arm64
+  linux_aarch64: linux_aarch64
 test_on_native_only: true
