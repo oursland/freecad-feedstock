@@ -1,7 +1,7 @@
 About freecad-feedstock
 =======================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/Freecad-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/freecad-feedstock/blob/main/LICENSE.txt)
 
 Home: https://www.freecad.org/
 
