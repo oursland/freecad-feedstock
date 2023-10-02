@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.21.pre" %}
-{% set build_number = 151 %}
+{% set build_number = 152 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -63,6 +63,7 @@ requirements:
         - six
         - ply
         - matplotlib
+        - yaml-cpp
     run:
         - pyside2
         - vtk
