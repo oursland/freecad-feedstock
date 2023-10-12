@@ -27,11 +27,7 @@ if [[ ${HOST} =~ .*darwin.* ]]; then
   # rm -rf /Library/Frameworks/Python.framework/Versions/3.11
 
   # install space-mouse
-  if [[ ${target_platform} =~ osx-64 ]]; then
-    /usr/bin/curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-6-6_360DF97D-ED08-4ccf-A55E-0BF905E58476/3DxWareMac_v10-6-6_r3234.dmg'
-  else
-    /usr/bin/curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-7-0_B564CC6A-6E81-42b0-82EC-418EA823B81A/3DxWareMac_v10-7-0_r3411.dmg'
-  fi
+  /usr/bin/curl -o /tmp/3dFW.dmg -L 'https://download.3dconnexion.com/drivers/mac/10-7-0_B564CC6A-6E81-42b0-82EC-418EA823B81A/3DxWareMac_v10-7-0_r3411.dmg'
   hdiutil attach -readonly /tmp/3dFW.dmg
   sudo installer -package /Volumes/3Dconnexion\ Software/Install\ 3Dconnexion\ software.pkg -target /
   diskutil eject /Volumes/3Dconnexion\ Software
