@@ -16,6 +16,10 @@ macos_task:
     # Instructions:
     osx_build_script: |
       export CI=cirrus
+      export flow_run_id="cirrus_${CIRRUS_TASK_ID}"
+      export remote_url=${CIRRUS_REPO_CLONE_URL}
+      export OSX_FORCE_SDK_DOWNLOAD="1"
+      export GIT_BRANCH=${CIRRUS_BASE_BRANCH}
       export FEEDSTOCK_NAME=$(basename ${CIRRUS_REPO_NAME})
       if [ -z "$CIRRUS_PR" ]; then
         export IS_PR_BUILD="False"
@@ -50,6 +54,9 @@ linux_task:
     # Instructions:
     docker_build_script: |
       export CI=cirrus
+      export flow_run_id="cirrus_${CIRRUS_TASK_ID}"
+      export remote_url=${CIRRUS_REPO_CLONE_URL}
+      export GIT_BRANCH=${CIRRUS_BASE_BRANCH}
       export FEEDSTOCK_NAME=$(basename ${CIRRUS_REPO_NAME})
       if [ -z "$CIRRUS_PR" ]; then
         export IS_PR_BUILD="False"
