@@ -29,7 +29,7 @@ jobs:
           - CONFIG: osx_64_python3.10.____cpython
             UPLOAD_PACKAGES: True
             os: macos
-            runs_on: ['macos-latest']
+            runs_on: ['macos-11']
     steps:
 
     - name: Checkout code
