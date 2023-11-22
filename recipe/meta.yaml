@@ -52,7 +52,7 @@ requirements:
         - vtk
         - eigen
         - pybind11
-        - coin3d
+        - coin3d==4.0.0
         - pyside2
         - smesh
         - doxygen  # [build_platform == target_platform]
@@ -73,7 +73,7 @@ requirements:
         - zlib
         - hdf5
         - python
-        - coin3d
+        - coin3d==4.0.0
         - pivy
         - {{ pin_compatible('smesh', max_pin='x.x.x') }}
         - freetype
