@@ -1,6 +1,6 @@
 {% set name = "freecad" %}
 {% set version = "0.22.pre" %}
-{% set build_number = 37 %}
+{% set build_number = 38 %}
 {% set build_number = build_number + 500 %}  # [FEATURE_DEBUG]
 
 package:
@@ -17,7 +17,7 @@ source:
 
 build:
     number: {{ build_number }}
-    skip: true  # [py != 310]
+    skip: true  # [py != 311]
 
 requirements:
     build:
@@ -45,7 +45,7 @@ requirements:
         - python
         - qt-main
         - qt-webengine
-        - occt ==7.6.3
+        - occt
         - xerces-c
         - zlib
         - vtk
