@@ -65,7 +65,6 @@ requirements:
         - pyside2
         - vtk
         - {{ pin_compatible('occt', max_pin='x.x.x') }}
-        - qt-wayland # [linux]
         - xerces-c
         - zlib
         - hdf5
