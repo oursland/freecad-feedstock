@@ -21,6 +21,7 @@ build:
 requirements:
     build:
         - {{ compiler("cxx") }}
+        - {{ stdlib("c") }}
         - {{ cdt('mesa-libgl-devel') }}      # [linux]
         - {{ cdt('mesa-dri-drivers') }}      # [linux]
         - {{ cdt('mesa-libegl-devel') }}     # [linux]
@@ -82,8 +83,7 @@ requirements:
         - gmsh
         - graphviz
     run_constrained:
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("11.0") }}   # [osx and arm64]
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.13") }}  # [osx and x86_64]
+        - {{ stdlib("c") }}
 
 
 about:
