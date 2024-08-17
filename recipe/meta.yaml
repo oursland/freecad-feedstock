@@ -47,7 +47,7 @@ requirements:
         - occt
         - xerces-c
         - zlib
-        - vtk
+        - vtk==9.2.6
         - eigen
         - pybind11
         - coin3d
@@ -65,7 +65,7 @@ requirements:
         - pivy
     run:
         - pyside2
-        - vtk
+        - vtk==9.2.6
         - {{ pin_compatible('occt', max_pin='x.x.x') }}
         - xerces-c
         - zlib
